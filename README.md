@@ -141,7 +141,7 @@ g++ -std=c++17 -Iinclude     Platinum.cpp     src/commands.cpp src/md5.cpp src/b
 
 - All functional modules are encapsulated under the `pt` namespace.  
 - New commands must have their corresponding functions implemented in `commands.cpp` and registered with routing in `Platinum.cpp`.  
-- Header files are统一 placed in the `include/` directory, while source files go into the `src/` directory.  
+- Header files are all placed in the `include/` directory, while source files go into the `src/` directory.  
 - Buzzer music data is stored in the `src/beep/` directory, named in the format `0xXXXXXXXX.cpp`. 
 
 ---
