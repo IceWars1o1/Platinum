@@ -1,0 +1,9 @@
+[INFO 2026-06-13 00:00:00]  
+    Pre-Release
+    Version name: "Alpha 26.1.0.061300A",   Version tag: 0.1.0
+[INFO 2026-06-28 11:30:00]  
+    Pre-Release
+    Version name: "Alpha 26.1.0.062800A",   Version tag: 0.1.1
+    New Features:
+        - [FIX] Fixed an issue where directories in Todo were mistakenly used in Linux format (instead of Windows x64);
+        - [ADD] Added the 'Done' function in Todo and modified the presentation of the 'List' to adapt to the new 'Done' function.

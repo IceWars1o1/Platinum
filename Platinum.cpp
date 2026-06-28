@@ -4,7 +4,7 @@
 #include <cstring>
 #include <iostream>
 
-const char* VERSION = "Alpha 26.1.0.061300A";
+const char* VERSION = "Alpha 26.1.0.062800A";
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {

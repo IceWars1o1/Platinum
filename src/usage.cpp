@@ -26,6 +26,7 @@ namespace pt{
         std::cout << "\t  add <item>\t\tAdd a todo item." << std::endl;
         std::cout << "\t  list\t\t\tList all todo items." << std::endl;
         std::cout << "\t  remove\t\tRemove a todo item by number." << std::endl;
+        std::cout << "\t  finish\t\tMark a todo item as [DONE] by numnber." << std::endl;
         std::cout << "\t  clear\t\t\tClear all todo items." << std::endl;
         std::cout << "\tcase subcommands:" << std::endl;
         std::cout << "\t  upper\t\t\tConvert to uppercase letters." << std::endl;

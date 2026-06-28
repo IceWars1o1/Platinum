@@ -6,20 +6,27 @@
 
 namespace pt {
 
-    static std::string get_config_dir() {
-        const char* home = std::getenv("HOME");
-        if (!home) home = ".";
-        return std::string(home) + "/.config/platinum";
+    static fs::path get_config_dir() {
+        wchar_t path[MAX_PATH];
+        if (SUCCEEDED(SHGetFolderPathW(nullptr, CSIDL_LOCAL_APPDATA, nullptr, 0, path))) {
+            return fs::path(path);
+        }
+        return fs::current_path();
+    }
+
+    static void create_config_dir(){
+        fs::path pa = get_config_dir();
+        if (fs::create_directory(pa / "platinum")){
+            std::ofstream file(pa / "platinum" / "todo.log");
+            if (file.is_open()){
+                file << "Create Successfully\n";
+                file.close();
+            }
+        }
     }
     
-    static void create_config_dir() {
-        std::string dir = get_config_dir();
-        std::string cmd = "mkdir -p " + dir + " 2>/dev/null";
-        std::system(cmd.c_str());
-    }
-    
-    std::string get_todo_file() {
-        return get_config_dir() + "/todo.txt";
+    fs::path get_todo_file() {
+        return get_config_dir() / "platinum" / "todo.txt";
     }
     
     bool is_number(const std::string& s) {
@@ -30,8 +37,25 @@ namespace pt {
         return true;
     }
     
+    static bool is_done(const std::string& line) {
+        return line.find("[DONE]") != std::string::npos;
+    }
+    
+    static std::string mark_done(const std::string& line) {
+        if (is_done(line)) return line;
+        return "[DONE]\t" + line;
+    }
+    
+    static void print_line(int num, const std::string& line) {
+        if (is_done(line)) {
+            std::cout << "[D] " << num << ". " << line.substr(line.find('\t') + 1) << std::endl;
+        } else {
+            std::cout << "[ ] " << num << ". " << line << std::endl;
+        }
+    }
+    
     void todo_add(const std::string& item) {
-        create_config_dir();
+        if (!fs::exists(get_config_dir() / "platinum")) create_config_dir();
         std::ofstream out(get_todo_file(), std::ios::app);
         if (!out) {
             std::cerr << "Error: Cannot open todo file" << std::endl;
@@ -51,7 +75,7 @@ namespace pt {
         std::string line;
         int num = 1;
         while (std::getline(in, line)) {
-            std::cout << num++ << ". " << line << std::endl;
+            print_line(num++, line);
         }
         in.close();
     }
@@ -76,7 +100,7 @@ namespace pt {
         }
         
         for (size_t i = 0; i < lines.size(); i++) {
-            std::cout << i + 1 << ". " << lines[i] << std::endl;
+            print_line(i + 1, lines[i]);
         }
         
         std::cout << "Enter number to remove (0 to cancel): ";
@@ -108,6 +132,64 @@ namespace pt {
         out.close();
         
         std::cout << "Removed: " << removed << std::endl;
+    }
+    
+    void todo_done_interactive() {
+        std::ifstream in(get_todo_file());
+        std::vector<std::string> lines;
+        std::string line;
+        
+        if (!in) {
+            std::cout << "No todo items." << std::endl;
+            return;
+        }
+        while (std::getline(in, line)) {
+            lines.push_back(line);
+        }
+        in.close();
+        
+        if (lines.empty()) {
+            std::cout << "No todo items." << std::endl;
+            return;
+        }
+        
+        for (size_t i = 0; i < lines.size(); i++) {
+            print_line(i + 1, lines[i]);
+        }
+        
+        std::cout << "Enter number to mark done (0 to cancel): ";
+        std::string input;
+        std::cin >> input;
+        
+        if (!is_number(input)) {
+            std::cout << "Cancelled." << std::endl;
+            return;
+        }
+        
+        int n = std::stoi(input);
+        if (n <= 0 || n > (int)lines.size()) {
+            std::cout << "Cancelled." << std::endl;
+            return;
+        }
+        
+        if (is_done(lines[n - 1])) {
+            std::cout << "Already done." << std::endl;
+            return;
+        }
+        
+        lines[n - 1] = mark_done(lines[n - 1]);
+        
+        std::ofstream out(get_todo_file(), std::ios::trunc);
+        if (!out) {
+            std::cerr << "Error: Cannot write todo file" << std::endl;
+            return;
+        }
+        for (const std::string& l : lines) {
+            out << l << std::endl;
+        }
+        out.close();
+        
+        std::cout << "Marked as done." << std::endl;
     }
     
     void todo_clear() {

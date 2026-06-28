@@ -71,6 +71,8 @@ namespace pt {
             todo_list();
         } else if (!std::strcmp(argv[2], "remove")) {
             todo_remove_interactive();
+        } else if (!std::strcmp(argv[2], "finish")){
+            todo_done_interactive();
         } else if (!std::strcmp(argv[2], "clear")) {
             todo_clear();
         } else {
