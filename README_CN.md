@@ -1,5 +1,10 @@
 # Platinum
 
+ - [English](README.md)
+ - [简体中文](README_CN.md)
+
+---
+
 
 Platinum 是一个使用 C++17 开发的 Windows 平台轻量级命令行工具包。它提供了 MD5 哈希计算、BMI 计算、随机数生成、待办事项管理、大小写转换、UUID 生成以及蜂鸣器音乐播放等实用功能。
 
