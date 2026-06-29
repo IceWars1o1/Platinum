@@ -1,5 +1,9 @@
 # Platinum
 
+ - [English](README.md)
+ - [简体中文](README_CN.md)
+
+---
 
 Platinum is a lightweight command-line toolkit developed in C++17 for the Windows platform. It offers practical features such as MD5 hashing, BMI calculation, random number generation, todo management, case conversion, UUID generation, and buzzer music playback. 
 
