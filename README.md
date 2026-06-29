@@ -100,7 +100,7 @@ Platinum/
 │   ├── uuid.cpp      # UUID generation implementation  
 │   └── beep/         # Beep music data  
 │       ├── base.cpp  # Basic note playback functions  
-│       └── 0x00000001.cpp  # Track "Shang Chun Shan"  
+│       └── 0x00000001.cpp  # Track "Shang Chun Shan(上春山)"  
 ├── test/             # Test files (independent module tests)  
 ├── Platinum.cpp      # Main program entry  
 ├── Makefile          # Build script  
@@ -117,7 +117,44 @@ Platinum/
 # Clone repository
 git clone https://github.com/IceWars1o1/Platinum.git
 cd Platinum
+```
 
+Then create a `Makefile` file in the root directory and type in the following content.
+
+```makefile
+CXX = g++
+CXXFLAGS = -std=c++17 -Iinclude
+BUILD = build
+SRC = src
+TARGET = platinum.exe
+
+OBJS = $(BUILD)/Platinum.o $(BUILD)/commands.o $(BUILD)/md5.o $(BUILD)/bmi.o \
+       $(BUILD)/random.o $(BUILD)/todo.o $(BUILD)/case.o $(BUILD)/uuid.o $(BUILD)/usage.o
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+$(BUILD)/%.o: $(SRC)/%.cpp | $(BUILD)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(BUILD)/Platinum.o: Platinum.cpp | $(BUILD)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(BUILD):
+	mkdir -p $(BUILD)
+
+clean:
+	rm -rf $(BUILD) $(TARGET)
+
+.PHONY: all clean
+
+```
+
+And then use following commands to compile the project.
+
+```bash
 # Compilation
 make
 
