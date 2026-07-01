@@ -1,10 +1,35 @@
-# Platinum
+<div align="center">
+
+<!-- 动态标题区 -->
+<img src="https://img.shields.io/badge/Windows-x64-0078D6?logo=windows&logoColor=white" alt="Platform">
+<img src="https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white" alt="C++17">
+<img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
+<img src="https://img.shields.io/github/v/release/IceWars1o1/Platinum?include_prereleases&color=brightgreen" alt="Release">
+
+<!-- 项目 Logo / 名称 -->
+<h1><img src="resource/icon.png" alt="Pt Platinum"><br> Platinum
+</h1>
+
+
+<p><strong>Lightweight command-line toolkit for Windows</strong></p>
+<p>MD5 · BMI · Random · Todo · Case Conversion · UUID · Buzzer Music</p>
+
+<!-- 快速安装按钮 -->
+<a href="https://github.com/IceWars1o1/Platinum/releases">
+  <img src="https://img.shields.io/badge/Download-2ea44f?style=for-the-badge" alt="Download">
+</a>
+&nbsp;
+<a href="#start">
+  <img src="https://img.shields.io/badge/Get Started-0366d6?style=for-the-badge" alt="Get Started">
+</a>
+
+</div>
 
  - [English](README.md)
  - [简体中文](README_CN.md)
 
 ---
-
+<div id="start"></div>
 Platinum is a lightweight command-line toolkit developed in C++17 for the Windows platform. It offers practical features such as MD5 hashing, BMI calculation, random number generation, todo management, case conversion, UUID generation, and buzzer music playback. 
 
 ---

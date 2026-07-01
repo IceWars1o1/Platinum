@@ -1,10 +1,36 @@
-# Platinum
+<div align="center">
+
+<!-- 动态标题区 -->
+<img src="https://img.shields.io/badge/Windows-x64-0078D6?logo=windows&logoColor=white" alt="Platform">
+<img src="https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white" alt="C++17">
+<img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
+<img src="https://img.shields.io/github/v/release/IceWars1o1/Platinum?include_prereleases&color=brightgreen" alt="Release">
+
+<!-- 项目 Logo / 名称 -->
+<h1><img src="resource/icon.png" alt="Pt Platinum"><br> Platinum
+</h1>
+
+
+<p><strong>Windows 轻量命令行工具</strong></p>
+<p>MD5 · BMI · 随机数 · 待办 · 字母转换 · UUID · 音乐播放</p>
+
+<!-- 快速安装按钮 -->
+<a href="https://github.com/IceWars1o1/Platinum/releases">
+  <img src="https://img.shields.io/badge/立即下载-2ea44f?style=for-the-badge" alt="Download">
+</a>
+&nbsp;
+<a href="#start">
+  <img src="https://img.shields.io/badge/快速开始-0366d6?style=for-the-badge" alt="Get Started">
+</a>
+
+</div>
+
 
  - [English](README.md)
  - [简体中文](README_CN.md)
 
 ---
-
+<div id="start"></div>
 
 Platinum 是一个使用 C++17 开发的 Windows 平台轻量级命令行工具包。它提供了 MD5 哈希计算、BMI 计算、随机数生成、待办事项管理、大小写转换、UUID 生成以及蜂鸣器音乐播放等实用功能。
 
