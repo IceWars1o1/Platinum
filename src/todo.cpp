@@ -14,15 +14,12 @@ namespace pt {
         return fs::current_path();
     }
 
-    static void create_config_dir(){
+    static bool create_config_dir(){
         fs::path pa = get_config_dir();
         if (fs::create_directory(pa / "platinum")){
-            std::ofstream file(pa / "platinum" / "todo.log");
-            if (file.is_open()){
-                file << "Create Successfully\n";
-                file.close();
-            }
+            return false;
         }
+        return true;
     }
     
     fs::path get_todo_file() {
