@@ -1,0 +1,84 @@
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0a0a0a;
+    color: #e5e4e2;
+}
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.terminal-window {
+    background: linear-gradient(180deg, #1a1a1a 0%, #111111 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+.code-block {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+.feature-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.3s ease;
+}
+.feature-card:hover {
+    border-color: rgba(34, 211, 238, 0.3);
+    background: linear-gradient(145deg, rgba(34, 211, 238, 0.05) 0%, rgba(255,255,255,0.01) 100%);
+}
+.gradient-text {
+    background: linear-gradient(135deg, #e5e4e2 0%, #22d3ee 50%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.grid-bg {
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+.command-prompt::before {
+    content: '$ ';
+    color: #34d399;
+}
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 767px) {
+    /* 极小屏隐藏项目名 */
+    .project-name {
+        display: none;
+    }
+    
+    nav{
+        width: 100vw;
+        max-width: 100vw;
+    }
+    
+    /* 确保导航栏容器不会溢出 */
+    nav > div {
+        min-width: 0;
+    }
+    
+    /* Logo 区域允许收缩 */
+    nav > div > div:first-child {
+        min-width: 0;
+        flex-shrink: 1;
+    }
+    
+    /* 汉堡按钮不收缩，始终可见 */
+    #menuBtn {
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+    
+    /* 强制中间所有隐藏元素完全不参与布局 */
+    nav .hidden.md\:flex,
+    nav .hidden.md\:inline-flex {
+        display: none !important;
+        width: 0;
+        margin: 0;
+        padding: 0;
+        flex: none;
+    }
+}
