@@ -50,28 +50,8 @@ tailwind.config = {
     }
 }
 
-const menuBtn = document.getElementById('menuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-const menuIcon = document.getElementById('menuIcon');
-const closeIcon = document.getElementById('closeIcon');
-
-menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    menuIcon.classList.toggle('hidden');
-    closeIcon.classList.toggle('hidden');
-});
-
-// Close menu when clicking a link
-mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-    });
-});
-
-
 document.addEventListener('DOMContentLoaded', function() {
+    
     fetch('assets/res/update.json')
         .then(response => response.json())
         .then(data => renderChangelog(data))
