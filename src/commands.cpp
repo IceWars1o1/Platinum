@@ -6,6 +6,7 @@
 #include "../include/case.hpp"
 #include "../include/uuid.hpp"
 #include "../include/usage.hpp"
+#include "../include/update.hpp" 
 #include <cstdio>
 #include <cstring>
 #include <iostream>
@@ -97,6 +98,10 @@ namespace pt {
     
     void cmd_uuid() {
         std::cout << uuid() << std::endl;
+    }
+
+    void cmd_update(const int ver[3]) {
+        do_update(ver);
     }
 
 }

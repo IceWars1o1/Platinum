@@ -13,7 +13,7 @@ namespace pt{
         std::cout << "\ttodo <subcommand>\tManage todo items." << std::endl;
         std::cout << "\tcase [options] <text>\tConvert text case." << std::endl;
         std::cout << "\tuuid\t\t\tGenerate a UUID(v1)." << std::endl;
-        std::cout << "\tplaysound\t\tPlay a music by beeping." << std::endl;
+        std::cout << "\tupdate\t\t\tCheck and install updates." << std::endl;  
     
         std::cout << std::endl;
         std::cout << "Options:" << std::endl;

@@ -10,5 +10,5 @@ namespace pt {
     void cmd_todo(int argc, char* argv[]);
     void cmd_case(int argc, char* argv[]);
     void cmd_uuid();
-    void beep_music();
+    void cmd_update(const int ver[3]);
 }

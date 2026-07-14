@@ -1,6 +1,13 @@
 [
     {
-        "version":"Alpha 26.1.0.071400A",
+        "version": "Alpha 26.1.0.071401A",
+        "tag": [0, 2, 1],
+        "info": [
+            ["ADD", "添加了更新功能，然后喝了一杯开心的咖啡"]
+        ]
+    },
+    {
+        "version": "Alpha 26.1.0.071400A",
         "tag": [0, 2, 0],
         "info": [
             ["FIX", "移除无用的beep music"],

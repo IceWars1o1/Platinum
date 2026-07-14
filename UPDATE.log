@@ -14,3 +14,8 @@
         - [FIX] Removed useless beep music;
         - [ADD] Added icon and more informations when compiling;
         - [ADD] Added Interactive Mode when argument count is less than 2, you can run commands more directly in Interactive Mode.
+[INFO 2026-07-14 16:15:00]
+    Pre-Release
+    Version name: "Alpha 26.1.0.071401A",   Version tag: 0.2.1
+    New Features:
+        - [ADD] Added update function, and drank a cup of happy coffee.
