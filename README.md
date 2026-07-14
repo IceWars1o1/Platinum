@@ -12,7 +12,7 @@
 
 
 <p><strong>Lightweight command-line toolkit for Windows</strong></p>
-<p>MD5 · BMI · Random · Todo · Case Conversion · UUID · Buzzer Music</p>
+<p>MD5 · BMI · Random · Todo · Case Conversion · UUID</p>
 
 <!-- 快速安装按钮 -->
 <a href="https://github.com/IceWars1o1/Platinum/releases">
@@ -84,10 +84,6 @@ platinum case lower "WORLD"
 
 # Generate UUID
 platinum uuid
-
-
-# Play buzzer music
-platinum playsound
 ```
 
 
@@ -106,35 +102,72 @@ platinum playsound
 
 ```
 Platinum/
-├── include/          # Header files  
-│   ├── beep.hpp      # Beeper note definitions  
-│   ├── bmi.hpp       # BMI calculation interface  
-│   ├── case.hpp      # Case conversion interface  
-│   ├── commands.hpp  # Command dispatch interface  
-│   ├── cursor.hpp    # Terminal cursor control macros  
-│   ├── md5.hpp       # MD5 hash interface  
-│   ├── random.hpp    # Random number generation interface  
-│   ├── todo.hpp      # Todo management interface  
-│   ├── usage.hpp     # Help and version information  
-│   └── uuid.hpp      # UUID generation interface  
-├── src/              # Source files  
-│   ├── beep.cpp      # Beep player entry point  
-│   ├── bmi.cpp       # BMI calculation implementation  
-│   ├── case.cpp      # Case conversion implementation  
-│   ├── commands.cpp  # Command parsing and dispatch  
-│   ├── md5.cpp       # MD5 algorithm implementation  
-│   ├── random.cpp    # Random number generation implementation  
-│   ├── todo.cpp      # Todo management implementation  
-│   ├── usage.cpp     # Help and version output  
-│   ├── uuid.cpp      # UUID generation implementation  
-│   └── beep/         # Beep music data  
-│       ├── base.cpp  # Basic note playback functions  
-│       └── 0x00000001.cpp  # Track "Shang Chun Shan(上春山)"  
-├── test/             # Test files (independent module tests)  
-├── Platinum.cpp      # Main program entry  
-├── Makefile          # Build script  
-├── LICENSE           # MIT License  
-└── README.md         # This file
+|   .gitignore
+|   LICENSE
+|   Makefile
+|   Platinum.cpp
+|   platinum.exe
+|   README.md
+|   README_CN.md
+|   UPDATE.log
++---build
+|       app_res.o
+|       bmi.o
+|       case.o
+|       commands.o
+|       md5.o
+|       Platinum.o
+|       random.o
+|       todo.o
+|       usage.o
+|       uuid.o
++---include
+|       bmi.hpp
+|       case.hpp
+|       commands.hpp
+|       cursor.hpp
+|       md5.hpp
+|       random.hpp
+|       todo.hpp
+|       usage.hpp
+|       uuid.hpp
++---resource
+|       app.rc
+|       icon.ico
+|       icon.png
++---src
+|       bmi.cpp
+|       case.cpp
+|       commands.cpp
+|       md5.cpp
+|       random.cpp
+|       todo.cpp
+|       usage.cpp
+|       uuid.cpp
++---test
+|       bmi
+|       bmi.cpp
+|       md5
+|       md5.cpp
+|       path.cpp
+|       path.exe
+|       random
+|       random.cpp
+|       terminal.exe
+|       todo
+|       todo.cpp
+\---website
+    |   index.html
+    \---assets
+        +---css
+        |       style.css
+        +---js
+        |       script.js
+        \---res
+                author.webp
+                favicon.ico
+                icon.png
+                update.json
 ```
 
 
@@ -158,11 +191,16 @@ SRC = src
 TARGET = platinum.exe
 
 OBJS = $(BUILD)/Platinum.o $(BUILD)/commands.o $(BUILD)/md5.o $(BUILD)/bmi.o \
-       $(BUILD)/random.o $(BUILD)/todo.o $(BUILD)/case.o $(BUILD)/uuid.o $(BUILD)/usage.o
+       $(BUILD)/random.o $(BUILD)/todo.o $(BUILD)/case.o $(BUILD)/uuid.o \
+       $(BUILD)/usage.o
+
+RES_OBJ = $(BUILD)/app_res.o
+
+.PHONY: all clean
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJS) $(RES_OBJ)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 $(BUILD)/%.o: $(SRC)/%.cpp | $(BUILD)
@@ -171,14 +209,14 @@ $(BUILD)/%.o: $(SRC)/%.cpp | $(BUILD)
 $(BUILD)/Platinum.o: Platinum.cpp | $(BUILD)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+$(RES_OBJ): resource/app.rc resource/icon.ico | $(BUILD)
+	windres -O coff -i $< -o $@
+
 $(BUILD):
 	mkdir -p $(BUILD)
 
 clean:
 	rm -rf $(BUILD) $(TARGET)
-
-.PHONY: all clean
-
 ```
 
 And then use following commands to compile the project.
@@ -196,11 +234,7 @@ After compilation, `platinum.exe` will be generated in the project root director
 
 #### Manual Compilation 
 
-If the Make tool is not available, you can directly call g++: 
-
-```bash
-g++ -std=c++17 -Iinclude     Platinum.cpp     src/commands.cpp src/md5.cpp src/bmi.cpp src/random.cpp     src/todo.cpp src/case.cpp src/uuid.cpp src/usage.cpp     src/beep.cpp src/beep/base.cpp src/beep/0x00000001.cpp     -o platinum.exe
-```
+If the Make tool is not available, you can directly call g++.
 
 
 ### Development Guidelines 
@@ -208,7 +242,6 @@ g++ -std=c++17 -Iinclude     Platinum.cpp     src/commands.cpp src/md5.cpp src/b
 - All functional modules are encapsulated under the `pt` namespace.  
 - New commands must have their corresponding functions implemented in `commands.cpp` and registered with routing in `Platinum.cpp`.  
 - Header files are all placed in the `include/` directory, while source files go into the `src/` directory.  
-- Buzzer music data is stored in the `src/beep/` directory, named in the format `0xXXXXXXXX.cpp`. 
 
 ---
 

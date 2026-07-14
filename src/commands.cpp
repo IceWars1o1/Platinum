@@ -6,7 +6,6 @@
 #include "../include/case.hpp"
 #include "../include/uuid.hpp"
 #include "../include/usage.hpp"
-#include "beep.cpp"
 #include <cstdio>
 #include <cstring>
 #include <iostream>
@@ -100,7 +99,4 @@ namespace pt {
         std::cout << uuid() << std::endl;
     }
 
-    void beep_music() {
-        player();
-    }
 }

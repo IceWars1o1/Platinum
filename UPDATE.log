@@ -7,3 +7,10 @@
     New Features:
         - [FIX] Fixed an issue where directories in Todo were mistakenly used in Linux format (instead of Windows x64);
         - [ADD] Added the 'Done' function in Todo and modified the presentation of the 'List' to adapt to the new 'Done' function.
+[INFO 2026-07-14 11:32:00]
+    Pre-Release
+    Version name: "Alpha 26.1.0.071400A",   Version tag: 0.2.0
+    New Features:
+        - [FIX] Removed useless beep music;
+        - [ADD] Added icon and more informations when compiling;
+        - [ADD] Added Interactive Mode when argument count is less than 2, you can run commands more directly in Interactive Mode.
