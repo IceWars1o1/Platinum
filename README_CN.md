@@ -32,7 +32,7 @@
 ---
 <div id="start"></div>
 
-Platinum 是一个使用 C++17 开发的 Windows 平台轻量级命令行工具包。它提供了 MD5 哈希计算、BMI 计算、随机数生成、待办事项管理、大小写转换、UUID 生成以及蜂鸣器音乐播放等实用功能。
+Platinum 是一个使用 C++17 开发的 Windows 平台轻量级命令行工具包。它提供了 MD5 哈希计算、随机数生成、待办事项管理、时间格式化输出以及UUID 生成等实用功能。
 
 
 ---
@@ -63,10 +63,6 @@ platinum --version
 platinum md5 "Hello World"
 
 
-# 计算 BMI（身高单位为厘米，体重单位为千克）
-platinum bmi 175 70
-
-
 # 生成随机数（默认范围 0 到 100）
 platinum random
 platinum random --min 1 --max 100
@@ -78,11 +74,6 @@ platinum todo list
 platinum todo finish
 platinum todo remove
 platinum todo clear
-
-
-# 大小写转换
-platinum case upper "hello"
-platinum case lower "WORLD"
 
 
 # 生成 UUID

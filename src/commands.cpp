@@ -1,12 +1,11 @@
 #include "../include/commands.hpp"
 #include "../include/md5.hpp"
-#include "../include/bmi.hpp"
 #include "../include/random.hpp"
 #include "../include/todo.hpp"
-#include "../include/case.hpp"
 #include "../include/uuid.hpp"
 #include "../include/usage.hpp"
 #include "../include/update.hpp" 
+#include "../include/showtime.hpp"
 #include <cstdio>
 #include <cstring>
 #include <iostream>
@@ -29,22 +28,6 @@ namespace pt {
         }
         std::string text = join_args(argc, argv, 2);
         std::cout << md5_string(text) << std::endl;
-    }
-    
-    void cmd_bmi(int argc, char* argv[]) {
-        if (argc < 4) {
-            std::cerr << "Error: bmi requires height and weight" << std::endl;
-            return;
-        }
-        double height = std::atof(argv[2]);
-        double weight = std::atof(argv[3]);
-        if (height <= 0 || weight <= 0) {
-            std::cerr << "Error: Invalid height or weight" << std::endl;
-            return;
-        }
-        double value = bmi(height, weight);
-        std::printf("%.2f\n", value);
-        std::cout << bmi_category(value) << std::endl;
     }
     
     void cmd_random(int argc, char* argv[]) {
@@ -80,28 +63,16 @@ namespace pt {
         }
     }
     
-    void cmd_case(int argc, char* argv[]) {
-        if (argc < 4) {
-            std::cerr << "Error: case requires mode and text" << std::endl;
-            return;
-        }
-        std::string mode = argv[2];
-        std::string text = join_args(argc, argv, 3);
-        if (mode == "upper") {
-            std::cout << to_upper(text) << std::endl;
-        } else if (mode == "lower") {
-            std::cout << to_lower(text) << std::endl;
-        } else {
-            std::cerr << "Error: mode must be upper or lower" << std::endl;
-        }
-    }
-    
     void cmd_uuid() {
         std::cout << uuid() << std::endl;
     }
 
     void cmd_update(const int ver[3]) {
         do_update(ver);
+    }
+
+    void cmd_time(int argc, char* argv[]) {
+        show_time(argc, argv);
     }
 
 }

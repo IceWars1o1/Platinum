@@ -30,7 +30,7 @@
 
 ---
 <div id="start"></div>
-Platinum is a lightweight command-line toolkit developed in C++17 for the Windows platform. It offers practical features such as MD5 hashing, BMI calculation, random number generation, todo management, case conversion, UUID generation, and buzzer music playback. 
+Platinum is a lightweight command-line toolkit developed in C++17 for the Windows platform. It offers practical features such as MD5 hashing, random number generation, todo management, time output, and UUID generation.
 
 ---
 
@@ -60,10 +60,6 @@ platinum --version
 platinum md5 "Hello World"
 
 
-# Calculate BMI (height in cm, weight in kg)
-platinum bmi 175 70
-
-
 # Generate random numbers (default 0 to 100)
 platinum random
 platinum random --min 1 --max 100
@@ -75,11 +71,6 @@ platinum todo list
 platinum todo finish
 platinum todo remove
 platinum todo clear
-
-
-# Case Conversion
-platinum case upper "hello"
-platinum case lower "WORLD"
 
 
 # Generate UUID

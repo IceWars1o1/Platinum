@@ -19,3 +19,9 @@
     Version name: "Alpha 26.1.0.071401A",   Version tag: 0.2.1
     New Features:
         - [ADD] Added update function, and drank a cup of happy coffee.
+[INFO 2026-07-15 12:00:00]
+    Pre-Release
+    Version name: "Alpha 26.1.0.071500A",   Version tag: 0.3.0
+    New Features:
+        - [FIX] Removed BMI and case converting function;
+        - [ADD] Added time format output function, which is allowed to get time from the Internet.

@@ -8,11 +8,10 @@ namespace pt{
         std::cout << std::endl;
         std::cout << "Commands:" << std::endl;
         std::cout << "\tmd5 <text>\t\tCalculate MD5 hash of text." << std::endl;
-        std::cout << "\tbmi <height> <weight>\tCalculate BMI." << std::endl;
         std::cout << "\trandom [options]\tGenerate random number." << std::endl;
         std::cout << "\ttodo <subcommand>\tManage todo items." << std::endl;
-        std::cout << "\tcase [options] <text>\tConvert text case." << std::endl;
         std::cout << "\tuuid\t\t\tGenerate a UUID(v1)." << std::endl;
+        std::cout << "\ttime\t\t\tDisplay time in specific style." << std::endl;
         std::cout << "\tupdate\t\t\tCheck and install updates." << std::endl;  
     
         std::cout << std::endl;
@@ -28,9 +27,6 @@ namespace pt{
         std::cout << "\t  remove\t\tRemove a todo item by number." << std::endl;
         std::cout << "\t  finish\t\tMark a todo item as [DONE] by numnber." << std::endl;
         std::cout << "\t  clear\t\t\tClear all todo items." << std::endl;
-        std::cout << "\tcase subcommands:" << std::endl;
-        std::cout << "\t  upper\t\t\tConvert to uppercase letters." << std::endl;
-        std::cout << "\t  lower\t\t\tConvert to lowercase letters." << std::endl;
     }
     
     void version(const char* ver){

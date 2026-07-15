@@ -7,8 +7,8 @@
 #include <vector>
 #include <sstream>
 
-const char* VERSION = "Alpha 26.1.0.071400A";
-const int VERSION_TAG[3] = {0, 2, 1};
+const char* VERSION = "Alpha 26.1.0.071500A";
+const int VERSION_TAG[3] = {0, 3, 0};
 
 static int dispatch(int argc, char* argv[]) {
     if (argc < 2) {
@@ -27,12 +27,11 @@ static int dispatch(int argc, char* argv[]) {
         return 0;
     }
     if (!std::strcmp(cmd, "md5"))      { pt::cmd_md5(argc, argv);     return 0; }
-    if (!std::strcmp(cmd, "bmi"))      { pt::cmd_bmi(argc, argv);     return 0; }
     if (!std::strcmp(cmd, "random"))   { pt::cmd_random(argc, argv);  return 0; }
     if (!std::strcmp(cmd, "todo"))     { pt::cmd_todo(argc, argv);    return 0; }
-    if (!std::strcmp(cmd, "case"))     { pt::cmd_case(argc, argv);    return 0; }
     if (!std::strcmp(cmd, "uuid"))     { pt::cmd_uuid();              return 0; }
     if (!std::strcmp(cmd, "update"))   { pt::cmd_update(VERSION_TAG); return 0; } 
+    if (!std::strcmp(cmd, "time"))     { pt::cmd_time(argc, argv);    return 0; }
 
     std::cerr << "Unknown command: " << cmd << std::endl;
     pt::usage();

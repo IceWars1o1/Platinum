@@ -133,10 +133,9 @@
                     <div class="command-prompt text-platinum-300">platinum md5 "Hello World"</div>
                     <div class="text-accent-emerald mb-3 ml-4">5eb63bbbe01eeed093cb22bb8f5acdc3</div>
 
-                    <div class="command-prompt text-platinum-300">platinum bmi 175 70</div>
+                    <div class="command-prompt text-platinum-300">platinum time slash</div>
                     <div class="text-platinum-400 mb-3 ml-4">
-                        22.86<br>
-                        <span class="text-accent-emerald">Normal</span>
+                        YYYY/MM/DD hh:mm:ss
                     </div>
 
                     <div class="command-prompt text-platinum-300">platinum uuid</div>
@@ -178,18 +177,6 @@
                     <code class="code-block block px-3 py-2 rounded-lg text-xs font-mono text-accent-emerald">platinum md5 "Hello World"</code>
                 </div>
 
-                <!-- BMI -->
-                <div class="feature-card rounded-2xl p-6">
-                    <div class="w-12 h-12 rounded-xl bg-accent-amber/10 flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-accent-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-platinum-200 mb-2">BMI 计算</h3>
-                    <p class="text-platinum-500 text-sm mb-4">输入身高（厘米）和体重（千克），自动计算 BMI 并给出健康评估。</p>
-                    <code class="code-block block px-3 py-2 rounded-lg text-xs font-mono text-accent-amber">platinum bmi 175 70</code>
-                </div>
-
                 <!-- Random -->
                 <div class="feature-card rounded-2xl p-6">
                     <div class="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center mb-4">
@@ -221,9 +208,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-platinum-200 mb-2">大小写转换</h3>
-                    <p class="text-platinum-500 text-sm mb-4">一键将文本转换为大写或小写，支持多词参数。</p>
-                    <code class="code-block block px-3 py-2 rounded-lg text-xs font-mono text-accent-rose">platinum case upper "hello world"</code>
+                    <h3 class="text-lg font-semibold text-platinum-200 mb-2">时间输出</h3>
+                    <p class="text-platinum-500 text-sm mb-4">快速格式化输出时间</p>
+                    <code class="code-block block px-3 py-2 rounded-lg text-xs font-mono text-accent-rose">platinum time slash</code>
                 </div>
 
                 <!-- UUID -->
@@ -342,18 +329,6 @@
                     <p class="text-platinum-500 text-sm">计算给定文本的 MD5 哈希值。支持多词参数，自动以空格拼接。</p>
                 </div>
 
-                <!-- bmi -->
-                <div class="code-block rounded-xl p-6">
-                    <div class="flex items-center gap-3 mb-3">
-                        <code class="text-accent-amber font-mono text-lg font-bold">bmi</code>
-                        <span class="text-platinum-500 text-sm">BMI 计算</span>
-                    </div>
-                    <div class="font-mono text-sm text-platinum-400 mb-2">
-                        platinum bmi <span class="text-accent-amber">&lt;height_cm&gt;</span> <span class="text-accent-amber">&lt;weight_kg&gt;</span>
-                    </div>
-                    <p class="text-platinum-500 text-sm">根据身高（厘米）和体重（千克）计算 BMI，并输出健康分类。</p>
-                </div>
-
                 <!-- random -->
                 <div class="code-block rounded-xl p-6">
                     <div class="flex items-center gap-3 mb-3">
@@ -385,12 +360,12 @@
                 <div class="code-block rounded-xl p-6">
                     <div class="flex items-center gap-3 mb-3">
                         <code class="text-accent-rose font-mono text-lg font-bold">case</code>
-                        <span class="text-platinum-500 text-sm">大小写转换</span>
+                        <span class="text-platinum-500 text-sm">时间输出</span>
                     </div>
                     <div class="font-mono text-sm text-platinum-400 mb-2">
-                        platinum case <span class="text-accent-amber">&lt;upper|lower&gt;</span> <span class="text-accent-amber">"&lt;text&gt;"</span>
+                        platinum time <span class="text-accent-amber">&lt;dash|slash|unix&gt;</span> [<span class="text-accent-violet">options</span>]
                     </div>
-                    <p class="text-platinum-500 text-sm">将文本转换为大写（upper）或小写（lower）。</p>
+                    <p class="text-platinum-500 text-sm">按照格式输出时间</p>
                 </div>
 
                 <!-- uuid -->
