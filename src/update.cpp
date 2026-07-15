@@ -252,6 +252,8 @@ namespace pt {
 
         std::cout << "[INFO] Launching update installer..." << std::endl;
 
+        Sleep(1000);
+
         ShellExecuteA(
             nullptr,
             "open",
@@ -315,6 +317,9 @@ namespace pt {
             return;
         }
 
+        fs::path temp_path = get_temp_download_path();
+
+        std::cout << "[INFO] Downloading from GitHub..." << std::endl;
         std::string download_url = "https://github.com/IceWars1o1/Platinum/releases/download/"
             + std::to_string(latest.tag[0]) + "."
             + std::to_string(latest.tag[1]) + "."
@@ -326,22 +331,29 @@ namespace pt {
             + std::to_string(latest.tag[2])
             + "/platinum.exe";
 
-        std::cout << "[INFO] Downloading from GitHub..." << std::endl;
-
-        fs::path temp_path = get_temp_download_path();
         if (!download_file(download_url, temp_path)) {
-            std::cerr << "[ERROR] Download failed." << std::endl;
-            return;
+            std::cout << "[INFO] GitHub direct download failed, trying mirror..." << std::endl;
+            std::string mirror_download_url = "https://gh-proxy.org/" + download_url;
+            
+            if (!download_file(mirror_download_url, temp_path)) {
+                std::cerr << "[ERROR] Download failed." << std::endl;
+                std::cout << "[INFO] You can manually download from:" << std::endl;
+                std::cout << "      " << download_url << std::endl;
+                std::cout << "[INFO] Or visit: https://github.com/IceWars1o1/Platinum/releases" << std::endl;
+                return;
+            }
         }
 
         std::cout << "[INFO] Download complete." << std::endl;
 
-        fs::path current_exe = get_current_exe_path();
-        run_update_script(temp_path, current_exe);
-
         std::cout << "[INFO] Platinum will now exit to apply the update." << std::endl;
 
         std::cout << temp_path;
+
+        Sleep(3000);
+
+        fs::path current_exe = get_current_exe_path();
+        run_update_script(temp_path, current_exe);
 
         std::exit(0);
     }
