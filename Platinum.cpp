@@ -7,8 +7,8 @@
 #include <vector>
 #include <sstream>
 
-const char* VERSION = "Alpha 26.1.0.073000A";
-const int VERSION_TAG[3] = {0, 4, 0};
+const char* VERSION = "Alpha 26.1.0.073000B";
+const int VERSION_TAG[3] = {0, 4, 1};
 
 static int dispatch(int argc, char* argv[]) {
     if (argc < 2) {

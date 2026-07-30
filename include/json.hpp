@@ -8,7 +8,7 @@ using json = nlohmann::json;
 
 namespace pt{
     inline const char* JSON_USAGE = R"(
-Usage: filename json <str|file> <minify|format> [--spacenum=<2|4>] <input>
+Usage: platinum json <str|file> <minify|format> [--spacenum=<2|4>] <input>
 
 Commands:
   str          Process a JSON string directly

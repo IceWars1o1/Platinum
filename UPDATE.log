@@ -36,3 +36,8 @@
     New Features:
         - [FIX] Removed useless update log fetching;
         - [ADD] Added JSON processing.
+[INFO 2026-07-30 13:00:00]
+    Pre-Release
+    Version name: "Alpha 26.1.0.073000B",   Version tag: 0.4.1
+    New Features:
+        - [FIX] Fixed two issues of spelling.

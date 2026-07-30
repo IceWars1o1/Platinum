@@ -327,7 +327,7 @@ namespace pt {
 
         std::cout << "[INFO] Platinum will now exit to apply the update." << std::endl;
 
-        std::cout << temp_path;
+        std::cout << temp_path << std::endl;
 
         Sleep(3000);
 
