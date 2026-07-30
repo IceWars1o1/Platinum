@@ -91,7 +91,7 @@ namespace pt {
             if (action == "minify") {
                 process = 1;
             } else {  // format
-                // 检查 argv[4] 是否是 --spacenum
+                // 检查 argv[4] 是否是 --spacenum=?
                 int sp = parse_spacenum(argv[4]);
                 if (sp == -1) {
                     std::cerr << "Error: invalid --spacenum value (must be 2 or 4)\n" << JSON_USAGE << std::endl;
@@ -101,7 +101,10 @@ namespace pt {
                     spaces = sp;
                     input_idx = 5;  // input 后移到 argv[5]
                 }
-                // 否则 sp==2（默认值），input 仍在 argv[4]
+                else if (parse_spacenum(argv[4], 0)){ // 判断 argv[4] 是否为 --spacenum=2
+                    input_idx = 5;
+                }
+                // 否则保持默认
                 
                 process = (spaces == 2) ? 2 : 3;
             }

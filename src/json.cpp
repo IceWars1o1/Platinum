@@ -21,11 +21,11 @@ namespace pt{
                 return j.dump();
                 break;
 
-            case 2:         // format with 2 ' 's
+            case 2:         // format with 2 spaces
                 return j.dump(2);
                 break;
 
-            case 3:         // format with 4 ' 's
+            case 3:         // format with 4 spaces
                 return j.dump(4);
                 break;
 

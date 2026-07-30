@@ -1,5 +1,12 @@
 [
     {
+        "version": "Alpha 26.1.0.073001A",
+        "tag": [0, 4, 2],
+        "info": [
+            ["FIX", "修复了用户在使用json file命令时无法在文件路径前使用--spacenum=?参数的问题"]
+        ]
+    },
+    {
         "version": "Alpha 26.1.0.073000B",
         "tag": [0, 4, 1],
         "info": [
