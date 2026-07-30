@@ -27,6 +27,12 @@
         - [ADD] Added time formatting output function, which is allowed to fetch time from the Internet.
 [INFO 2026-07-15 13:30:00]
     Pre-Release
-    Version name "Alpha 26.1.0.071501A",    Version tag: 0.3.1
+    Version name: "Alpha 26.1.0.071501A",   Version tag: 0.3.1
     New Features:
         - [ADD] Added a new update mirror site and petted a cat vigorously.
+[INFO 2026-07-30 11:00:00]
+    Pre-Release
+    Version name: "Alpha 26.1.0.073000A",   Version tag: 0.4.0
+    New Features:
+        - [FIX] Removed useless update log fetching;
+        - [ADD] Added JSON processing.

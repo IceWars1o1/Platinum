@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <filesystem>
-#include "json.hpp"
+#include "third_party/json.hpp"
 
 namespace fs = std::filesystem;
 using json = nlohmann::json;
@@ -12,7 +12,6 @@ namespace pt {
     struct VersionInfo {
         std::string version_name;
         int tag[3];  // [major, minor, patch]
-        std::vector<std::pair<std::string, std::string>> changes;
     };
 
     fs::path get_update_dir();

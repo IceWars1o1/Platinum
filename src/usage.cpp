@@ -10,6 +10,7 @@ namespace pt{
         std::cout << "\tmd5 <text>\t\tCalculate MD5 hash of text." << std::endl;
         std::cout << "\trandom [options]\tGenerate random number." << std::endl;
         std::cout << "\ttodo <subcommand>\tManage todo items." << std::endl;
+        std::cout << "\tjson <subcommand>\tProcess JSON strings or files." << std::endl;
         std::cout << "\tuuid\t\t\tGenerate a UUID(v1)." << std::endl;
         std::cout << "\ttime\t\t\tDisplay time in specific style." << std::endl;
         std::cout << "\tupdate\t\t\tCheck and install updates." << std::endl;  
@@ -27,6 +28,8 @@ namespace pt{
         std::cout << "\t  remove\t\tRemove a todo item by number." << std::endl;
         std::cout << "\t  finish\t\tMark a todo item as [DONE] by numnber." << std::endl;
         std::cout << "\t  clear\t\t\tClear all todo items." << std::endl;
+        std::cout << "\tTo see json subcommands, please run:" << std::endl;
+        std::cout << "\t\tplatinum json" << std::endl;
     }
     
     void version(const char* ver){

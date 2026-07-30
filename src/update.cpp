@@ -159,16 +159,6 @@ namespace pt {
                     }
                 }
 
-                if (item.contains("info") && item["info"].is_array()) {
-                    for (const auto& entry : item["info"]) {
-                        if (entry.is_array() && entry.size() >= 2) {
-                            std::string type = entry[0].get<std::string>();
-                            std::string desc = entry[1].get<std::string>();
-                            info.changes.emplace_back(type, desc);
-                        }
-                    }
-                }
-
                 result.push_back(info);
             }
         } catch (const json::exception& e) {
@@ -183,7 +173,7 @@ namespace pt {
         if (!versions.empty()) {
             return versions[0];
         }
-        return VersionInfo{"Unknown", {0, 0, 0}, {}};
+        return VersionInfo{"Unknown", {0, 0, 0}};
     }
 
     bool is_newer_version(const int remote[3], const int local[3]) {
@@ -230,9 +220,6 @@ namespace pt {
         std::string current_str = current_exe.string();
         std::string new_str = new_exe.string();
 
-        // for (auto& c : current_str) if (c == '\\') c = '/';
-        // for (auto& c : new_str) if (c == '\\') c = '/';
-
         bat << "@echo off\n";
         bat << "echo [INFO] Waiting for Platinum to exit...\n";
         bat << "timeout /t 2 /nobreak >nul\n";
@@ -276,7 +263,7 @@ namespace pt {
 
         if (response.empty()) {
             std::cout << "[INFO] Primary source failed, trying fallback..." << std::endl;
-            json_url = "https://github.com/IceWars1o1/Platinum/raw/refs/heads/master/website/assets/res/update.json";
+            json_url = "https://raw.githubusercontent.com/IceWars1o1/Platinum/refs/heads/master/website/assets/res/update.json";
             response = http_get(json_url);
         }
 
@@ -299,14 +286,6 @@ namespace pt {
 
         std::cout << "[INFO] A new version is available!" << std::endl;
         std::cout << "[INFO] Changelog: https://pt.iw1o1.qzz.io/#changelog" << std::endl;
-
-        // if (!latest.changes.empty()) {
-        //     std::cout << std::endl << "Changes in " << latest.version_name << ":" << std::endl;
-        //     for (const auto& [type, desc] : latest.changes) {
-        //         std::cout << "  [" << type << "] " << desc << std::endl;
-        //     }
-        //     std::cout << std::endl;
-        // }
 
         std::cout << "[PROMPT] Download and install update? [Y/n] ";
         std::string input;

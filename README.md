@@ -12,7 +12,7 @@
 
 
 <p><strong>Lightweight command-line toolkit for Windows</strong></p>
-<p>MD5 · BMI · Random · Todo · Case Conversion · UUID</p>
+<p>MD5 · BMI · Random · Todo · JSON · Case Conversion · UUID</p>
 
 <!-- 快速安装按钮 -->
 <a href="https://github.com/IceWars1o1/Platinum/releases">
@@ -24,9 +24,6 @@
 </a>
 
 </div>
-
- - [English](README.md)
- - [简体中文](README_CN.md)
 
 ---
 <div id="start"></div>
@@ -71,6 +68,10 @@ platinum todo list
 platinum todo finish
 platinum todo remove
 platinum todo clear
+
+
+# JSON Processing
+platinum json str format '{'key':'value'}'
 
 
 # Generate UUID

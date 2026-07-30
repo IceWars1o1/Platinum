@@ -18,5 +18,5 @@
 #define HIDE_CURSOR() printf("\033[?25l")
 // 显示光标
 #define SHOW_CURSOR() printf("\033[?25h")
-//反显
+// 反显
 #define HIGHT_LIGHT() printf("\033[7m")

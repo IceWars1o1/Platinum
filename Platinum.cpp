@@ -7,8 +7,8 @@
 #include <vector>
 #include <sstream>
 
-const char* VERSION = "Alpha 26.1.0.071501A";
-const int VERSION_TAG[3] = {0, 3, 1};
+const char* VERSION = "Alpha 26.1.0.073000A";
+const int VERSION_TAG[3] = {0, 4, 0};
 
 static int dispatch(int argc, char* argv[]) {
     if (argc < 2) {
@@ -29,6 +29,7 @@ static int dispatch(int argc, char* argv[]) {
     if (!std::strcmp(cmd, "md5"))      { pt::cmd_md5(argc, argv);     return 0; }
     if (!std::strcmp(cmd, "random"))   { pt::cmd_random(argc, argv);  return 0; }
     if (!std::strcmp(cmd, "todo"))     { pt::cmd_todo(argc, argv);    return 0; }
+    if (!std::strcmp(cmd, "json"))     { pt::cmd_json(argc, argv);    return 0; }
     if (!std::strcmp(cmd, "uuid"))     { pt::cmd_uuid();              return 0; }
     if (!std::strcmp(cmd, "update"))   { pt::cmd_update(VERSION_TAG); return 0; } 
     if (!std::strcmp(cmd, "time"))     { pt::cmd_time(argc, argv);    return 0; }
@@ -41,16 +42,53 @@ static int dispatch(int argc, char* argv[]) {
 static std::vector<std::string> tokenize(const std::string& line) {
     std::vector<std::string> tokens;
     std::string cur;
-    bool inQuotes = false;
-    for (char c : line) {
-        if (c == '"') { inQuotes = !inQuotes; continue; }
-        if (c == ' ' && !inQuotes) {
-            if (!cur.empty()) { tokens.push_back(cur); cur.clear(); }
+    bool inDoubleQuotes = false;
+    bool inSingleQuotes = false;
+
+    for (size_t i = 0; i < line.size(); ++i) {
+        char c = line[i];
+
+        if (c == '\\' && !inSingleQuotes && i + 1 < line.size()) {
+            char next = line[i + 1];
+            if (next == '"' || next == '\'' || next == '\\' || next == ' ') {
+                cur += next;
+                ++i;
+                continue;
+            }
+        }
+
+        if (c == '\'' && !inDoubleQuotes) {
+            inSingleQuotes = !inSingleQuotes;
+            continue;
+        }
+        if (c == '"' && !inSingleQuotes) {
+            inDoubleQuotes = !inDoubleQuotes;
+            continue;
+        }
+
+        if (c == ' ' && !inDoubleQuotes && !inSingleQuotes) {
+            if (!cur.empty()) {
+                tokens.push_back(cur);
+                cur.clear();
+            }
         } else {
             cur += c;
         }
     }
-    if (!cur.empty()) tokens.push_back(cur);
+
+    if (inDoubleQuotes) {
+        std::cerr << "unclosed double quote." << "\n";
+        return {};
+    }
+    if (inSingleQuotes) {
+        std::cerr << "unclosed single quote" << "\n";
+        return {};
+    }
+
+    if (!cur.empty()) {
+        tokens.push_back(cur);
+    }
+
     return tokens;
 }
 
