@@ -51,6 +51,16 @@ tailwind.config = {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    fetch('assets/res/update.json')
+    .then(response => response.json())
+    .then(data => {
+        renderChangelog(data);
+        // 自动获取最新版本号
+        const latestVersion = data[0]?.version || 'Alpha 26.1.0.000000A';
+        document.getElementById('hero-version').textContent = latestVersion;
+        document.getElementById('terminal-version').textContent = latestVersion;
+    })
     
     fetch('assets/res/update.json')
         .then(response => response.json())
