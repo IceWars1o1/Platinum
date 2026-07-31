@@ -11,8 +11,8 @@
 #include <windows.h>
 #endif
 
-const char* VERSION = "Alpha 26.1.0.073100A";
-const int VERSION_TAG[3] = {0, 5, 0};
+const char* VERSION = "Alpha 26.1.0.073101A";
+const int VERSION_TAG[3] = {0, 5, 1};
 
 static int dispatch(int argc, char* argv[]) {
     if (argc < 2) {
@@ -44,7 +44,7 @@ static int dispatch(int argc, char* argv[]) {
 }
 
 static std::vector<std::string> tokenize(const std::string& line) {
-    /*
+    
     std::vector<std::string> tokens;
     std::string cur;
     bool inDoubleQuotes = false;
@@ -95,7 +95,7 @@ static std::vector<std::string> tokenize(const std::string& line) {
     }
 
     return tokens;
-    */
+    /*
 
     std::istringstream iss(line);
     std::vector<std::string> tokens;
@@ -111,6 +111,7 @@ static std::vector<std::string> tokenize(const std::string& line) {
         tokens.push_back(token); // tokens = {"hello", "world", "test"}
     }
     return tokens;
+    */
 }
 
 static void interactive_terminal() {

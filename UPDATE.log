@@ -52,3 +52,8 @@
     New Features:
         - [FIX] Fixed the issue where you couldn't type in Chinese;
         - [FIX] Fixed the issue where the tokenizer would delete quotation marks.
+[INFO 2026-07-31 19:50:00]
+    Pre-Release
+    Version name: "Alpha 26.1.0.073101A",   Version tag: 0.5.1
+    New Features:
+        - [FIX] Reverted the change that 'Fixed the issue where the tokenizer would delete quotation marks'.
