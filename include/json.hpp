@@ -11,27 +11,28 @@ namespace pt{
 Usage: platinum json <str|file> <minify|format> [--spacenum=<2|4>] <input>
 
 Commands:
-  str          Process a JSON string directly
-  file         Process a JSON file (path provided as input)
+    str         Process a JSON string directly
+    file        Process a JSON file (path provided as input)
 
 Subcommands:
-  minify       Output compact JSON (no whitespace)
-  format       Pretty-print JSON with indentation
+    minify      Output compact JSON (no whitespace)
+    format      Pretty-print JSON with indentation
 
 Options:
-  --spacenum=2  Indent with 2 spaces (default for format)
-  --spacenum=4  Indent with 4 spaces
+    --spacenum=2    Indent with 2 spaces (default for format)
+    --spacenum=4    Indent with 4 spaces
 
 Arguments:
-  input        JSON string (for 'str') or file path (for 'file')
+    input       JSON string (for 'str') or file path (for 'file')
 
 Examples:
-  platinum json str minify '{"a": 1}'
-  platinum json str format --spacenum=4 '{"a": 1}'
-  platinum json file format /path/to/file.json
-  platinum json file minify /path/to/file.json
+    platinum json str minify '{"a": 1}'
+    platinum json str format --spacenum=4 '{"a": 1}'
+    platinum json file format /path/to/file.json
+    platinum json file minify /path/to/file.json
 )";
-
+    std::string gbk_to_utf8(const std::string& gbk);
+    std::string utf8_to_gbk(const std::string& utf8);
     int parse_spacenum(const char* arg, int default_val = 2);
     std::string json_str(std::string input, int process);
     void json_file(fs::path file, int process);

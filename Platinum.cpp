@@ -7,8 +7,12 @@
 #include <vector>
 #include <sstream>
 
-const char* VERSION = "Alpha 26.1.0.073001A";
-const int VERSION_TAG[3] = {0, 4, 2};
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
+const char* VERSION = "Alpha 26.1.0.073100A";
+const int VERSION_TAG[3] = {0, 5, 0};
 
 static int dispatch(int argc, char* argv[]) {
     if (argc < 2) {
@@ -40,6 +44,7 @@ static int dispatch(int argc, char* argv[]) {
 }
 
 static std::vector<std::string> tokenize(const std::string& line) {
+    /*
     std::vector<std::string> tokens;
     std::string cur;
     bool inDoubleQuotes = false;
@@ -90,6 +95,22 @@ static std::vector<std::string> tokenize(const std::string& line) {
     }
 
     return tokens;
+    */
+
+    std::istringstream iss(line);
+    std::vector<std::string> tokens;
+    std::string token;
+
+    while (iss >> token) {
+        int length = token.length();
+        if (length >= 2){
+            if ((token[0] == '\'' && token[length-1] == '\'') || (token[0] == '"' && token[length-1] == '"')){
+                token = token.substr(1,length-2);
+            }
+        }
+        tokens.push_back(token); // tokens = {"hello", "world", "test"}
+    }
+    return tokens;
 }
 
 static void interactive_terminal() {
@@ -136,6 +157,11 @@ static void interactive_terminal() {
 }
 
 int main(int argc, char* argv[]) {
+#ifdef _WIN32
+    SetConsoleOutputCP(936);
+    SetConsoleCP(936);
+#endif
+    
     if (argc < 2) {
         interactive_terminal();
         return 0;

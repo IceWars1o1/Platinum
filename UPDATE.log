@@ -46,3 +46,9 @@
     Version name: "Alpha 26.1.0.073001A",   Version tag: 0.4.2
     New Features:
         - [FIX] Fixed the issue that user cannot use json file command with argument of "--spacenum=?" before the file path.
+[INFO 2026-07-31 10:40:00]
+    Pre-Release
+    Version name: "Alpha 26.1.0.073100A",   Version tag: 0.5.0
+    New Features:
+        - [FIX] Fixed the issue where you couldn't type in Chinese;
+        - [FIX] Fixed the issue where the tokenizer would delete quotation marks.

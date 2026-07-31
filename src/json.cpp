@@ -1,8 +1,41 @@
 #include "../include/json.hpp"
 #include <fstream>
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 namespace pt{
-    int parse_spacenum(const char* arg, int default_val) {
+    // GBK -> UTF-8
+    std::string gbk_to_utf8(const std::string& gbk) {
+        if (gbk.empty()) return "";
+        
+        int wlen = MultiByteToWideChar(936, 0, gbk.c_str(), -1, nullptr, 0);
+        std::vector<wchar_t> wstr(wlen);
+        MultiByteToWideChar(936, 0, gbk.c_str(), -1, wstr.data(), wlen);
+        
+        int ulen = WideCharToMultiByte(CP_UTF8, 0, wstr.data(), -1, nullptr, 0, nullptr, nullptr);
+        std::string utf8(ulen - 1, 0);
+        WideCharToMultiByte(CP_UTF8, 0, wstr.data(), -1, &utf8[0], ulen, nullptr, nullptr);
+        
+        return utf8;
+    }
+
+    // UTF-8 -> GBK
+    std::string utf8_to_gbk(const std::string& utf8) {
+        if (utf8.empty()) return "";
+        
+        int wlen = MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), -1, nullptr, 0);
+        std::vector<wchar_t> wstr(wlen);
+        MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), -1, wstr.data(), wlen);
+        
+        int glen = WideCharToMultiByte(936, 0, wstr.data(), -1, nullptr, 0, nullptr, nullptr);
+        std::string gbk(glen - 1, 0);
+        WideCharToMultiByte(936, 0, wstr.data(), -1, &gbk[0], glen, nullptr, nullptr);
+        
+        return gbk;
+    }
+
+    int parse_spacenum(const char* arg, int default_val) {  // int default_val=2;
         if (std::strncmp(arg, "--spacenum=", 11) == 0) {
             int val = std::atoi(arg + 11);
             if (val == 2 || val == 4) return val;
@@ -14,19 +47,21 @@ namespace pt{
 
     std::string json_str(std::string input, int process){
 
-        json j = json::parse(input);
+        std::string utf8_input = gbk_to_utf8(input);
+
+        json j = json::parse(utf8_input);
         switch(process){
 
             case 1:         // minify
-                return j.dump();
+                return utf8_to_gbk(j.dump());
                 break;
 
             case 2:         // format with 2 spaces
-                return j.dump(2);
+                return utf8_to_gbk(j.dump(2));
                 break;
 
             case 3:         // format with 4 spaces
-                return j.dump(4);
+                return utf8_to_gbk(j.dump(4));
                 break;
 
             default:

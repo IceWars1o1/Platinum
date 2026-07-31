@@ -102,8 +102,9 @@ namespace pt {
                     input_idx = 5;  // input 后移到 argv[5]
                 }
                 else if (parse_spacenum(argv[4], 0)){ // 判断 argv[4] 是否为 --spacenum=2
-                    input_idx = 5;
+                    input_idx = 5;  // input 后移到 argv[5]
                 }
+
                 // 否则保持默认
                 
                 process = (spaces == 2) ? 2 : 3;
