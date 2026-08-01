@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Platinum</title>
+</head>
+<body>
+    <h1>Download Platinum</Plaintext></h1>
+    <div id="status">Getting ready to download...</div><br>
+    <div id="link-container" style="display:none;">
+        Or press <a id="download-link" href="#">this</a> to download.
+    </div>
+    <small>
+        Made by <a href="mailto:icewars@163.com">IceWars1o1</a>.<br>
+        <a href="https://github.com/IceWars1o1/Platinum/blob/master/LICENSE">MIT License</a><br>
+        Windows code signing provided by <a href="https://signpath.io/">SignPath.io</a>, certificate from <a href="https://signpath.org/">SignPath Foundation</a>
+    </small>
+
+    <script>
+        fetch('../assets/res/update.json')
+            .then(response => response.json())
+            .then(data => {
+                const tagStr = data[0].tag.join('.');
+                const download_url = "https://github.com/IceWars1o1/Platinum/releases/download/" + tagStr + "/platinum.exe";
+
+                // 立刻渲染超链接
+                const link = document.getElementById('download-link');
+                link.href = download_url;
+                document.getElementById('link-container').style.display = 'block';
+
+                // 3秒后通过 download_url 发起下载
+                setTimeout(() => {
+                    const a = document.createElement('a');
+                    a.href = download_url;
+                    a.download = 'platinum.exe';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }, 3000);
+            })
+            .catch(err => {
+                document.getElementById('status').textContent = 'Failed to load update info.';
+                console.error(err);
+            });
+    </script>
+</body>
+</html>
